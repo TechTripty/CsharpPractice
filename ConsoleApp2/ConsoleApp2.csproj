@@ -5,7 +5,7 @@
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-	  <StartupObject>ConsoleApp2.collection.StackTopic.ArrayListBasic</StartupObject>
+	  <StartupObject>ConsoleApp2.Delegates.Delegatepractice6</StartupObject>
 	  
   </PropertyGroup>
 
