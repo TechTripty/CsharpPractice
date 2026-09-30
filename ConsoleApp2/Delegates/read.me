@@ -1,0 +1,109 @@
+Delegates :-  
+Delegate is a type which holds the method(s) reference in an object. It is also referred to as a type safe
+function pointer. A delegate instance can encapsulate a static or a non-static method also and call that method for execution. 
+
+Methods can be called in 2 different ways in C#, those are:
+1. Using instance of a class if it is non-static and name of the class if it is static.
+2. Using a delegate (either static or non-static).
+
+To call a method by using delegate we need to adopt the following process:
+1. Define a delegate.
+2. Instantiate the delegate.
+3. Call the delegate by passing required parameter values.
+
+syntax:-
+[<modifiers>] delegate void|<type> Name(<Parameter List>)
+
+Note: while defining a delegate you should follow the same signature of the method i.e., parameters of delegate should be same as the parameters of method and return types of delegates should be same as the return types of method, we want to call by using the delegate.
+1>
+public delegate void AddDelegate(int x, int y)
+
+public void AddNums(int x, int y)
+{
+ Console.WriteLine(x + y);
+}
+
+
+public delegate  Addpratice (string name)
+
+public static string SayHello(string name)
+{
+ return “Hello “ + name;
+}
+
+2>AddDelegate ad =  new AddDelegate(AddNums)
+
+  Addpratice wh = new Addpratice(SayHello)
+
+3>ad(int x, int y)
+  wh(string name)
+
+
+Instantiate the delegate: In this process we create the instance of the delegate and bind the method we want to
+call by using the delegate to the delegate.
+ AddDel ad = new AddDel(AddNums); or AddDel ad = AddNums;
+SayDel sd = new SayDel(SayHello); or SayDel sd = SayHello;
+
+Calling the delegate: Call the delegate by passing required parameter values, so that the method which is bound
+with delegate gets executed.
+ad(100, 50); string str = sd(“Raju”);
+
+
+
+Multicast Delegate: It is a delegate who holds the reference of more than one method. Multicast delegates must
+contain only methods that return void. If we want to call multiple methods using a single delegate all the methods
+should have the same Parameter types. 
+
+
+DelegatePractiec3 del = new DelegatePractiec3();
+DisplayDelegate from = del.Add;
+from += del.Sub;
+from += del.Mul;
+from += del.Div;
+from(10, 5);
+
+Anonymous Methods :- Anonymous methods are basically methods without a name.It is created using the delegate keyword and doesn’t require
+modifiers, name, and return type. Hence, we can say an anonymous method has only body without name, return
+type and optional parameters. 
+
+
+ DisplayDelegate from = delegate (int x, int y)
+ {
+     Console.WriteLine($"Add: {x + y}");
+ };
+ from(10, 5);
+
+
+Lambda Expression:- Lambda
+Expressions are simply an improvement to syntax when using Anonymous method. Lambda Operator “=>” was
+introduced so that there is no longer a need to use the delegate keyword or provide the type of the parameter. 
+
+
+ DisplayDelegate from =  (int x, int y)  =>
+ {
+     Console.WriteLine($"Add: {x + y}");
+ };
+ from(10, 5);
+
+
+generic delegate:-
+func :- return ho raha ho kuch bhi 
+action  :- return type void 
+predicate :- return type bool
+
+
+
+ Func<int, int, int> obj = Add;
+ var result = obj.Invoke(1,1);
+ Console.WriteLine(result);
+
+ Action<int, int> action = Add2;
+ action.Invoke(1,1);
+
+
+ Func<int, bool> obj11 = Add3;
+ var resulta = obj11.Invoke(1);
+ Console.WriteLine(resulta);
+
+
+
